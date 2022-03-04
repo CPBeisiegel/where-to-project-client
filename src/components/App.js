@@ -5,8 +5,9 @@ import Home from "../pages/Home";
 import Signup from "../pages/auth/Signup";
 import Login from "../pages/auth/Login";
 import ProtectedRoute from "../pages/auth/ProtectedRoute";
-import Stays from "../pages/Stays";
-import NavbarExterna from "./Navbar";
+
+import { NavbarExterna } from "./Navbar";
+import { Cards } from "./Card";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
@@ -14,11 +15,11 @@ function App() {
   return (
     <AuthContextComponent>
       <NavbarExterna />
+      <Cards />
       <Routes>
         <Route path="/" element={<ProtectedRoute component={Home} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/stays" element={<Stays />} />
       </Routes>
     </AuthContextComponent>
   );

@@ -1,6 +1,6 @@
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 
-function NavbarExterna() {
+export function NavbarExterna() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -27,5 +27,3 @@ function NavbarExterna() {
     </Navbar>
   );
 }
-
-export default NavbarExterna;

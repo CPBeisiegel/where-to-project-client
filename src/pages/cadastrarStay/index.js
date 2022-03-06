@@ -1,10 +1,22 @@
 import { FormFild } from "../../components/Form";
 import { ErrorAlert } from "../../components/ErrorAlert";
 import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 import axios from "axios";
 
 export function cadastrarStay() {
-  const [form, setForm] = useState({});
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    stayTitle: "",
+    stayCountry: "",
+    stayCity: "",
+    stayType: "",
+    perNight: 0,
+    description: "",
+    stayDetails: "",
+    amenities: "",
+    stayImage: "",
+  });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -24,6 +36,7 @@ export function cadastrarStay() {
       );
       console.log(response);
       setLoading(false);
+      navigate("/estays") /* ADICIONAR A PAGE DE CASAS */
     } catch (error) {
       setLoading(false);
       setError(error);
@@ -40,8 +53,15 @@ export function cadastrarStay() {
     <>
       <h1>Cadastre uma estadia:</h1>
       <form onSubmit={handleSubmit}>
-        <FormFild onChange={handleChange} readOnly={loading} />{" "}
-        {/* stayTitle */}
+        <FormFild  {/* stayTitle */}
+        label="Nome da Estadia"
+        id="stayTitleCadastro"
+        name="stayTitle"
+        value={form.stayTitle}
+        required={true}
+        onChange={handleChange} 
+        readOnly={loading} />
+       
         <FormFild /> {/* stayCountry */}
         <FormFild /> {/* stayCity */}
         <FormFild /> {/* stayType ENUM */}

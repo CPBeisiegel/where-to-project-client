@@ -2,7 +2,7 @@ import { Carousel } from "react-bootstrap";
 
 export function Carrossel() {
   return (
-    <Carousel>
+    <Carousel className="container">
       <Carousel.Item interval={2000}>
         <img
           className="d-block w-100"

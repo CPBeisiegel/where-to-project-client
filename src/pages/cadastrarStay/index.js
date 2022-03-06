@@ -1,4 +1,5 @@
 import { FormFild } from "../../components/Form";
+import { ErrorAlert } from "../../components/ErrorAlert";
 import { useState } from "react";
 import axios from "axios";
 
@@ -16,6 +17,7 @@ export function cadastrarStay() {
 
     try {
       setLoading(true);
+      setError(null);
       const response = await axios.post(
         "http://localhost:4000/api/stays/create-stay",
         form
@@ -24,7 +26,13 @@ export function cadastrarStay() {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error);
+      setError(error);
+      if (error.response) {
+        console.log(error);
+        setError(error.response.data);
+      } else {
+        setError("Algo deu errado");
+      }
     }
   }
 
@@ -52,6 +60,7 @@ export function cadastrarStay() {
             "Cadastrar"
           )}
         </button>
+        {error ? <ErrorAlert>{error}</ErrorAlert> : null}
       </form>
     </>
   );

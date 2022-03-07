@@ -26,7 +26,7 @@ function Login(props) {
     event.preventDefault();
 
     try {
-      const response = await api.post("/login", state);
+      const response = await api.post("/users/login", state);
       console.log(response);
 
       authContext.setLoggedInUser({ ...response.data });

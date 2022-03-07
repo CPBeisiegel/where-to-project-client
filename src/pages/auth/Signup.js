@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../../apis/api";
 
 function Signup(props) {
-  const [state, setState] = useState({ name: "", password: "", email: "" });
+  const [state, setState] = useState({ userName: "", password: "", email: "" });
   const [errors, setErrors] = useState({
-    name: null,
+    userName: null,
     email: null,
     password: null,
   });
@@ -23,8 +23,8 @@ function Signup(props) {
     event.preventDefault();
 
     try {
-      const response = await api.post("/signup", state);
-      setErrors({ name: "", password: "", email: "" });
+      const response = await api.post("/users/signup", state);
+      setErrors({ userName: "", password: "", email: "" });
       navigate("/login");
     } catch (err) {
       if (err.response) {
@@ -44,10 +44,10 @@ function Signup(props) {
         <label htmlFor="signupFormName">Name</label>
         <input
           type="text"
-          name="name"
+          name="userName"
           id="signupFormName"
-          value={state.name}
-          error={errors.name}
+          value={state.userName}
+          error={errors.userName}
           onChange={handleChange}
         />
       </div>

@@ -23,8 +23,6 @@ export function Stays(props) {
     fetchStays();
   }, []);
 
-  console.log("ESSE AQUI");
-
   return (
     <div className="cards">
       <SearchBar />

@@ -5,6 +5,20 @@ import { AuthContext } from "../../contexts/authContext";
 import Logo from "../../assets/images/Viagem.png";
 
 export function NavbarExterna() {
+  const { loggedInUser } = useContext(AuthContext);
+  const [loginState, setLoginState] = useState(loggedInUser);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setLoginState(loggedInUser);
+  }, [loggedInUser]);
+
+  function handleLogOut() {
+    localStorage.removeItem("loggedInUser");
+    setLoginState(null);
+    navigate("/");
+  }
+
   return (
     <Navbar collapseOnSelect expand="lg" style={{ backgroundColor: "#6667AB" }}>
       <Container>
@@ -20,10 +34,11 @@ export function NavbarExterna() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto navbar-brand ">
-            <Nav.Link to="#home">Home</Nav.Link>
-            <Nav.Link to="#home">Estadias</Nav.Link>
-            <Nav.Link to="#link">Cadastrar</Nav.Link>
-            <Nav.Link to="#link">Entrar</Nav.Link>
+            <Nav.Link to={loginState ? "/UserHome" : "/"}>Home</Nav.Link>
+            <Nav.Link to={loginState ? "/UserHome" : "/login"}>
+              {loginState ? "Minha Home" : "Entrar"}
+            </Nav.Link>
+            <Nav.Link to="#link"></Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

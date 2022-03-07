@@ -1,10 +1,10 @@
-import { FormFild } from "../../components/Form";
+import { FormField } from "../../components/Form";
 import { ErrorAlert } from "../../components/ErrorAlert";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export function cadastrarStay() {
+export function PostNewStay() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     stayTitle: "",
@@ -36,7 +36,7 @@ export function cadastrarStay() {
       );
       console.log(response);
       setLoading(false);
-      navigate("/estays") /* ADICIONAR A PAGE DE CASAS */
+      navigate("/estays"); /* ADICIONAR A PAGE DE CASAS */
     } catch (error) {
       setLoading(false);
       setError(error);
@@ -53,24 +53,24 @@ export function cadastrarStay() {
     <>
       <h1>Cadastre uma estadia:</h1>
       <form onSubmit={handleSubmit}>
-        <FormFild  {/* stayTitle */}
-        label="Nome da Estadia"
-        id="stayTitleCadastro"
-        name="stayTitle"
-        value={form.stayTitle}
-        required={true}
-        onChange={handleChange} 
-        readOnly={loading} />
-       
-        <FormFild /> {/* stayCountry */}
-        <FormFild /> {/* stayCity */}
-        <FormFild /> {/* stayType ENUM */}
-        <FormFild /> {/* perNight */}
-        <FormFild /> {/* description */}
-        <FormFild /> {/* stayDetails */}
-        <FormFild /> {/* amenities GUESTS BEDROOM BATHROOM */}
-        <FormFild /> {/* stayImage */}
-        <FormFild /> {/* userId */}
+        <FormField /* stayTitle */
+          label="Nome da Estadia"
+          id="stayTitleCadastro"
+          name="stayTitle"
+          value={form.stayTitle}
+          required={true}
+          onChange={handleChange}
+          readOnly={loading}
+        />
+        <FormField /> {/* stayCountry */}
+        <FormField /> {/* stayCity */}
+        <FormField /> {/* stayType ENUM */}
+        <FormField /> {/* perNight */}
+        <FormField /> {/* description */}
+        <FormField /> {/* stayDetails */}
+        <FormField /> {/* amenities GUESTS BEDROOM BATHROOM */}
+        <FormField /> {/* stayImage */}
+        <FormField /> {/* userId */}
         <button type="submit" disable={loading}>
           {loading ? (
             <div className="spinner-border" role="status">

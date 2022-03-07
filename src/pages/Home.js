@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { FormField } from "../components/Form";
 function Home() {
   return (
     <div className="text-center">
@@ -14,6 +14,7 @@ function Home() {
         <Link className="btn btn-lg btn-primary" to="/auth/signup">
           Signup here!
         </Link>
+        <FormField></FormField>
       </div>
     </div>
   );

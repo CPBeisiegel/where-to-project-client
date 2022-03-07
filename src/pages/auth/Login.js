@@ -30,6 +30,7 @@ function Login(props) {
       console.log(response);
 
       authContext.setLoggedInUser({ ...response.data });
+      console.log(response.token);
       localStorage.setItem(
         "loggedInUser",
         JSON.stringify({ ...response.data })
@@ -71,6 +72,17 @@ function Login(props) {
       </div>
 
       <div>
+        {/*  <Button type="submit" disabled={loading} className="btn btn-primary">
+          {loading ? (
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          ) : (
+            "Entrar"
+          )}
+        </Button>
+
+        {error ? <ErrorAlert>{error}</ErrorAlert> : null} */}
         <button type="submit">Login!</button>
 
         <Link to="/signup">Don't have an account? Click here to signup!</Link>

@@ -5,22 +5,19 @@ import Home from "../pages/Home";
 import Signup from "../pages/auth/Signup";
 import Login from "../pages/auth/Login";
 import ProtectedRoute from "../pages/auth/ProtectedRoute";
-
-import { NavbarExterna } from "./Navbar";
-import { Carrossel } from "./Carrossel";
-import { HowTo } from "./HowTo";
+import UserHome from "../pages/UserHome";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
 function App() {
   return (
     <AuthContextComponent>
-      <NavbarExterna />
-      <Carrossel />
-      <HowTo />
-
       <Routes>
-        <Route path="/" element={<ProtectedRoute component={Home} />} />
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/user-home"
+          element={<ProtectedRoute component={UserHome} />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>

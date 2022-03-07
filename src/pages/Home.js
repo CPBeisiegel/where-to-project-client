@@ -1,21 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FormField } from "../components/Form";
-function Home() {
+import { NavbarExterna } from "../components/Navbar";
+import { Carrossel } from "../components/Carrossel";
+import { HowTo } from "../components/HowTo";
+
+export function Home() {
   return (
-    <div className="text-center">
-      <img
-        src="https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/84/original/logo-ironhack-blue.png"
-        alt="ironhack logo"
-      />
-      <h1>React IronPlate</h1>
-      <p>This is the homepage</p>
-      <div className="d-flex flex-column align-items-center">
-        <Link className="btn btn-lg btn-primary" to="/auth/signup">
-          Signup here!
-        </Link>
-        <FormField></FormField>
-      </div>
+    <div>
+      <NavbarExterna />
+      <Carrossel />
+      <HowTo />
     </div>
   );
 }

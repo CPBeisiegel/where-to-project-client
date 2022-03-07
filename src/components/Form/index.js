@@ -1,4 +1,4 @@
-export function FormFild(props) {
+export function FormField(props) {
   return (
     <div>
       <label htmlFor={props.id}>{props.label}</label>

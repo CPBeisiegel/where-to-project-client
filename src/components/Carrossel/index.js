@@ -12,7 +12,7 @@ export function Carrossel() {
         <Carousel.Caption style={{ backgroundColor: "#6667AB" }}>
           <h3>Where to... férias luxuosas?</h3>
           <p>
-            Perto de Londres, casa costruída em 1710 para aristocracia inglesa
+            Perto de Londres, casa construída em 1710 para aristocracia inglesa
           </p>
         </Carousel.Caption>
       </Carousel.Item>

@@ -3,6 +3,7 @@ export function FormField(props) {
     <div>
       <label htmlFor={props.id}>{props.label}</label>
       <input
+        className="form-control"
         type={props.type}
         id={props.id} //deve ser igual ao htmlFor do label, para se relacionarem
         name={props.name} //relacionar com a chave do objeto do state

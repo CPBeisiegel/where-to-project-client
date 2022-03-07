@@ -7,8 +7,8 @@ import Login from "../pages/auth/Login";
 import ProtectedRoute from "../pages/auth/ProtectedRoute";
 
 import { NavbarExterna } from "./Navbar";
-import { Cards } from "./Card";
 import { Carrossel } from "./Carrossel";
+import { HowTo } from "./HowTo";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
@@ -17,7 +17,8 @@ function App() {
     <AuthContextComponent>
       <NavbarExterna />
       <Carrossel />
-      <Cards />
+      <HowTo />
+
       <Routes>
         <Route path="/" element={<ProtectedRoute component={Home} />} />
         <Route path="/signup" element={<Signup />} />

@@ -1,16 +1,20 @@
 import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export function Cards() {
+export function Cards(props) {
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src={props.stayImage} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Title>{props.stayTitle}</Card.Title>
+        <Card.Text>{props.stayCountry}</Card.Text>
+        <Card.Text>{props.stayCity}</Card.Text>
+        <Card.Text>{props.stayCity}</Card.Text>
+        <Card.Text>{props.stayType}</Card.Text>
+
+        <Link to={`/stays/user-stay/${props.id}`}>
+          <Button variant="primary">Mais informações </Button>
+        </Link>
       </Card.Body>
     </Card>
   );

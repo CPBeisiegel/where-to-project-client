@@ -6,6 +6,8 @@ import Signup from "../pages/auth/Signup";
 import Login from "../pages/auth/Login";
 import ProtectedRoute from "../pages/auth/ProtectedRoute";
 import UserHome from "../pages/UserHome";
+import { Stays } from "../pages/Stays";
+import { StayDetails } from "../pages/StayDetails/index";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
@@ -20,6 +22,8 @@ function App() {
         />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/stays" element={<Stays />} />
+        <Route path="/stays/user-stay/:id" element={<StayDetails />} />
       </Routes>
     </AuthContextComponent>
   );

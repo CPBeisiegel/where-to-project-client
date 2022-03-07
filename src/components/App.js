@@ -6,12 +6,14 @@ import Signup from "../pages/auth/Signup";
 import Login from "../pages/auth/Login";
 import ProtectedRoute from "../pages/auth/ProtectedRoute";
 import UserHome from "../pages/UserHome";
+import { NavbarExterna } from "./Navbar/index";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
 function App() {
   return (
     <AuthContextComponent>
+      <NavbarExterna />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

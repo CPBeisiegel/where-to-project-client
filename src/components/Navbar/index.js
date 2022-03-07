@@ -30,7 +30,7 @@ export function NavbarExterna() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto navbar-brand ">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href={loginState.token === "" ? "/login" : "/UserHome"}>
+            <Nav.Link href={loginState.token === "" ? "/login" : "/user-home"}>
               {loginState.token === "" ? "Login" : "Minha Página"}
             </Nav.Link>
 

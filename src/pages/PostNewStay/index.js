@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export function CadastrarStay() {
+export function PostNewStay() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     stayTitle: "",

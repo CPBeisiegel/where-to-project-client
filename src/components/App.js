@@ -8,12 +8,14 @@ import ProtectedRoute from "../pages/auth/ProtectedRoute";
 import UserHome from "../pages/UserHome";
 import { Stays } from "../pages/Stays";
 import { StayDetails } from "../pages/StayDetails/index";
+import NavbarExterna from "./Navbar";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
 function App() {
   return (
     <AuthContextComponent>
+      <NavbarExterna />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

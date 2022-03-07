@@ -23,7 +23,7 @@ function Signup(props) {
     event.preventDefault();
 
     try {
-      const response = await api.post("/users/signup", state);
+      await api.post("/users/signup", state);
       setErrors({ userName: "", password: "", email: "" });
       navigate("/login");
     } catch (err) {

@@ -35,6 +35,7 @@ function Login(props) {
       console.log(response);
 
       authContext.setLoggedInUser({ ...response.data });
+      console.log(response.token);
       localStorage.setItem(
         "loggedInUser",
         JSON.stringify({ ...response.data })

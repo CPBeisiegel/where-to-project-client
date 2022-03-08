@@ -68,15 +68,6 @@ function Login(props) {
             error={errors.email}
             placeholder="Digite seu e-mail"
           />
-          {/*  <label htmlFor="signupFormEmail">E-mail Address</label>
-          <input
-            type="email"
-            name="email"
-            id="signupFormEmail"
-            value={state.email}
-            error={errors.email}
-            onChange={handleChange}
-          /> */}
         </div>
 
         <div style={{ marginTop: "15px" }}>
@@ -93,16 +84,6 @@ function Login(props) {
             error={errors.password}
             placeholder="Digite sua senha"
           />
-
-          {/* <label htmlFor="signupFormPassword">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="signupFormPassword"
-            value={state.password}
-            error={errors.password}
-            onChange={handleChange}
-          /> */}
         </div>
 
         <div style={{ marginTop: "15px" }}>

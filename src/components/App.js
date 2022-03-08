@@ -11,6 +11,7 @@ import { StayDetails } from "../pages/StayDetails/index";
 import { NavbarExterna } from "./Navbar";
 import { PostNewStay } from "../pages/PostNewStay";
 import { EditStay } from "../pages/EditStay";
+import { UserEditProfile } from "../pages/UserEditProfile";
 import { PostNewComent } from "../pages/PostNewComent/index";
 
 import { AuthContextComponent } from "../contexts/authContext";
@@ -19,6 +20,7 @@ function App() {
   return (
     <AuthContextComponent>
       <NavbarExterna />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -31,6 +33,8 @@ function App() {
         <Route path="/stays/user-stay/:id" element={<StayDetails />} />
         <Route path="/stays/create-stay" element={<PostNewStay />} />
         <Route path="/stays/user-stay/update/:id" element={<EditStay />} />
+        <Route path="/users/profile/update/:id" element={<UserEditProfile />} />
+        <Route path="/:stayId/create-review" element={<PostNewComent />} />
         <Route path="/reviews/:id/create-review" element={<PostNewComent />} />
         <Route path="/reviews/:id/create-review" element={<PostNewComent />} />
       </Routes>

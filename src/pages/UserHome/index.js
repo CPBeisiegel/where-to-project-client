@@ -1,38 +1,39 @@
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import apis from "../../apis/api";
+import { Button } from "react-bootstrap";
+
 function UserHome() {
-  return <h1>UserHome</h1>;
-}
-
-export default UserHome;
-
-/* import { useEffect, useState } from "react";
-import { api } from "../../api/api";
-
-export function Dashboard() {
-  const [test, setTest] = useState({
+  const { id } = useParams();
+  const [profile, setProfile] = useState({
     _id: "",
-    name: "",
+    userName: "",
     email: "",
-    profilePicture: "",
-    goals: [],
+    userImage: "",
   });
 
   useEffect(() => {
-    async function fechUser() {
+    async function fetchUser() {
       try {
-        const response = await api.get("/users/profile");
+        const response = await apis.get(`/users/profile/${id}`);
         console.log(response.data);
-        setTest({ ...response.data });
+        setProfile({ ...response.data });
       } catch (error) {
         console.error(error);
       }
     }
-    fechUser();
-  }, []);
+    fetchUser();
+  }, [id]);
 
   return (
     <>
-      <h1>{`Meu nome: ${test.name}. Meu email: ${test.email}. Meu id: ${test._id}`}</h1>
-      <img src={test.profilePicture} alt="Minha foto" />
+      <h1>{`Meu nome: ${profile.userName}. Meu email: ${profile.email}. Meu id: ${profile._id}`}</h1>
+      <img src={profile.userImage} alt="Minha foto" />
+      <Link to={`/users/profile/update/${profile._id}`}>
+        <Button variant="primary">Editar </Button>
+      </Link>
     </>
   );
-} */
+}
+
+export default UserHome;

@@ -9,6 +9,7 @@ import UserHome from "../pages/UserHome";
 import { Stays } from "../pages/Stays";
 import { StayDetails } from "../pages/StayDetails/index";
 import { NavbarExterna } from "./Navbar";
+import { PostNewStay } from "../pages/PostNewStay";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/stays" element={<Stays />} />
         <Route path="/stays/user-stay/:id" element={<StayDetails />} />
+        <Route path="/stays/create-stay" element={<PostNewStay />} />
       </Routes>
     </AuthContextComponent>
   );

@@ -10,7 +10,11 @@ import { Stays } from "../pages/Stays";
 import { StayDetails } from "../pages/StayDetails/index";
 import { NavbarExterna } from "./Navbar";
 import { PostNewStay } from "../pages/PostNewStay";
+<<<<<<< HEAD
 import { EditStay } from "../pages/EditStay";
+=======
+import { PostNewComent } from "../pages/PostNewComent";
+>>>>>>> eaa73994cff963ee58d8262818b831757074ec86
 
 import { AuthContextComponent } from "../contexts/authContext";
 
@@ -29,7 +33,11 @@ function App() {
         <Route path="/stays" element={<Stays />} />
         <Route path="/stays/user-stay/:id" element={<StayDetails />} />
         <Route path="/stays/create-stay" element={<PostNewStay />} />
+<<<<<<< HEAD
         <Route path="/stays/user-stay/update/:id" element={<EditStay />} />
+=======
+        <Route path="/:stayId/create-review" element={<PostNewComent />} />
+>>>>>>> eaa73994cff963ee58d8262818b831757074ec86
       </Routes>
     </AuthContextComponent>
   );

@@ -1,5 +1,5 @@
-import { useState, useParams } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import apis from "../../apis/api";
 import { Container } from "react-bootstrap";
 import { FormField } from "../../components/Form";
@@ -8,6 +8,7 @@ import { ButtonGlobal } from "../../components/Button";
 export function PostNewComent() {
   const navigate = useNavigate();
   const { id } = useParams();
+  //console.log("ID:", id);
 
   const [form, setForm] = useState({
     review: "",
@@ -15,27 +16,26 @@ export function PostNewComent() {
 
   function handleChange(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
-    console.log(form);
+    //console.log(event.target.value);
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
-
     try {
-      const response = await apis.post(`/${id}/create-review`, ...form);
-      console.log(response, id);
-      navigate("/stays");
+      const response = await apis.post(`/reviews/${id}/create-review`, form);
+      console.log("ESSE É O RESPONSE:", response.data);
+      navigate("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <Container>
         <h1 style={{ textAlign: "center", marginTop: "30px" }}>Comentar</h1>
 
-        <div style={{ marginTop: "30px" }}>
+        <form onSubmit={handleSubmit}>
           <FormField
             type="text"
             label="Deixe seu comentário"
@@ -45,11 +45,12 @@ export function PostNewComent() {
             value={form.review}
             required={true}
           />
-        </div>
-        <div style={{ marginTop: "15px" }}>
-          <ButtonGlobal type="submit">Publicar</ButtonGlobal>
-        </div>
+
+          <div style={{ marginTop: "15px" }}>
+            <ButtonGlobal type="submit">Publicar</ButtonGlobal>
+          </div>
+        </form>
       </Container>
-    </form>
+    </div>
   );
 }

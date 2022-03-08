@@ -5,7 +5,11 @@ export function Carrossel() {
     <Carousel>
       <Carousel.Item interval={5000}>
         <img
-          className="d-block w-100"
+          style={{
+            height: "30rem",
+            width: "100%",
+            objectFit: "cover",
+          }}
           src="https://a0.muscache.com/im/pictures/bd478462-cfac-4e27-9be2-d5faa1188523.jpg?im_w=960"
           alt="First slide"
         />
@@ -18,7 +22,11 @@ export function Carrossel() {
       </Carousel.Item>
       <Carousel.Item interval={5000}>
         <img
-          className="d-block w-100"
+          style={{
+            height: "30rem",
+            width: "100%",
+            objectFit: "cover",
+          }}
           src="https://a0.muscache.com/im/pictures/11bd9fc9-4ca9-4208-b449-bdc63a1969b9.jpg?im_w=960"
           alt="Second slide"
         />
@@ -29,7 +37,11 @@ export function Carrossel() {
       </Carousel.Item>
       <Carousel.Item interval={5000}>
         <img
-          className="d-block w-100"
+          style={{
+            height: "30rem",
+            width: "100%",
+            objectFit: "cover",
+          }}
           src="https://a0.muscache.com/im/pictures/a6b1bff2-6660-45f5-89df-37e3edf39bb9.jpg?im_w=960"
           alt="Third slide"
         />

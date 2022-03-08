@@ -1,6 +1,7 @@
 import { Cards } from "../../components/Card";
 import { SearchBar } from "../../components/Searchbar";
 import { Container } from "react-bootstrap";
+import "./Stays.css";
 /* import { InternalNavbar } from "../../components/InternalNavbar"; */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -28,11 +29,12 @@ export function Stays(props) {
 
   return (
     <Container>
-      <div className="cards mb-3">
+      <div className="search mb-3" style={{ marginTop: "30px" }}>
         <SearchBar />
+      </div>
 
-        {/*   <InternalNavbar /> */}
-
+      {/*   <InternalNavbar /> */}
+      <div className="cards" style={{ marginTop: "15px" }}>
         {stays
           .filter((currentStay) => {
             return currentStay.id === params.id;

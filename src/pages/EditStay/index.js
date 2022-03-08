@@ -17,7 +17,7 @@ export function EditStay() {
     stayType: "",
     perNight: null,
     description: "",
-    stayDetails: "",
+    stayDetails: { guests: "" },
     amenities: "",
     stayImage: "",
   });
@@ -38,6 +38,11 @@ export function EditStay() {
   }, [id]);
 
   function handleChange(event) {
+    if (event.target.files) {
+      setForm({ ...form, [event.target.name]: event.target.files[0] });
+      return;
+    }
+
     setForm({ ...form, [event.target.name]: event.target.value });
   }
 
@@ -46,7 +51,7 @@ export function EditStay() {
       const uploadData = new FormData();
       uploadData.append("picture", file);
 
-      const response = await apis.post("/picture-stay", uploadData);
+      const response = await apis.post("/stays/pictures", uploadData);
 
       console.log(response.data.url);
 
@@ -62,20 +67,20 @@ export function EditStay() {
     try {
       setLoading(true);
       setError(null);
-
+      console.log(form);
       const stayImage = await handleUpload(form.stayImage);
 
-      const result = await apis.put(
-        `/stays/user-stay/update/${id}`,
+      const result = await apis.patch(`/stays/user-stay/update/${id}`, {
         ...form,
-        stayImage
-      );
+        stayImage: stayImage,
+      });
       console.log(result);
       setLoading(false);
       navigate("/stays/list-stays"); /* ADICIONAR A PAGE DE CASAS */
     } catch (error) {
       setLoading(false);
       setError(error);
+
       if (error.result) {
         console.log(error);
         setError(error.response.data);
@@ -92,7 +97,7 @@ export function EditStay() {
       <Form className="mb-3" onSubmit={handleSubmit}>
         <FormField /* stayTitle */
           label="Nome da Estadia"
-          id="stayTitleCreate"
+          id="stayTitleEdit"
           name="stayTitle"
           value={form.stayTitle}
           required={true}
@@ -101,7 +106,7 @@ export function EditStay() {
         />
         <FormField
           label="País"
-          id="stayCountryCreate"
+          id="stayCountryEdit"
           name="stayCountry"
           value={form.stayCountry}
           required={true}
@@ -111,7 +116,7 @@ export function EditStay() {
         {/* stayCountry */}
         <FormField
           label="Cidade"
-          id="stayCityCreate"
+          id="stayCityEdit"
           name="stayCity"
           value={form.stayCity}
           required={true}
@@ -124,7 +129,7 @@ export function EditStay() {
           <Form.Check
             type="checkbox"
             label="House"
-            id="stayTypeCreate"
+            id="stayTypeEdit"
             name="stayType"
             required={true}
             onChange={handleChange}
@@ -134,7 +139,7 @@ export function EditStay() {
           <Form.Check
             type="checkbox"
             label="Apartament"
-            id="stayTypeCreate"
+            id="stayTypeEdit"
             name="stayType"
             required={true}
             onChange={handleChange}
@@ -144,7 +149,7 @@ export function EditStay() {
           <Form.Check
             type="checkbox"
             label="Motorhome"
-            id="stayTypeCreate"
+            id="stayTypeEdit"
             name="stayType"
             required={true}
             onChange={handleChange}
@@ -155,7 +160,7 @@ export function EditStay() {
         <FormField
           type="number"
           label="Preço por noite"
-          id="perNightCreate"
+          id="perNightEdit"
           name="perNight"
           value={form.perNight}
           required={false}
@@ -165,7 +170,7 @@ export function EditStay() {
         {/* perNight */}
         <FormField
           label="Descrição"
-          id="descriptionCreate"
+          id="descriptionEdit"
           name="description"
           value={form.description}
           required={true}
@@ -175,10 +180,10 @@ export function EditStay() {
         {/* description */}
         <FormField
           label="Detalhes da Estadia"
-          id="stayDetailsCreate"
+          id="stayDetailsEdit"
           name="stayDetails"
           placeholder="quantos quartos?"
-          value={form.stayDetails}
+          value={form.stayDetails.guests}
           required={false}
           onChange={handleChange}
           readOnly={loading}
@@ -186,7 +191,7 @@ export function EditStay() {
         {/* stayDetails */}
         <FormField
           label="Facilidades"
-          id="amenitiesCreate"
+          id="amenitiesEdit"
           name="amenities"
           value={form.amenities}
           required={false}

@@ -1,5 +1,5 @@
 import { Cards } from "../../components/Card";
-import { SearchBar } from "../../components/SearchBar";
+import { SearchBar } from "../../components/Searchbar";
 import { Container } from "react-bootstrap";
 /* import { InternalNavbar } from "../../components/InternalNavbar"; */
 import { useState, useEffect } from "react";

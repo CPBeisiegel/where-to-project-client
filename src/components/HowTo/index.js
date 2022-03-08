@@ -3,7 +3,7 @@ import { Card, CardGroup, Container } from "react-bootstrap";
 export function HowTo() {
   return (
     <div>
-      <Container className="mt-5 mb-5">
+      <Container className="mt-5 mb-5" style={{ color: "#6667AB" }}>
         <h1 style={{ color: "#6667AB" }}>
           Tem uma <b>casa</b>, <b>apartamento</b> ou <b>estadia itinerante</b>?
           Alugue-o! Descubra as vantagens do aluguel entre particulares com o{" "}

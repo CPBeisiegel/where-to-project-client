@@ -1,5 +1,5 @@
 import { Cards } from "../../components/Card";
-import { SearchBar } from "../../components/SearchBar";
+import { SearchBar } from "../../components/Searchbar";
 /* import { InternalNavbar } from "../../components/InternalNavbar"; */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";

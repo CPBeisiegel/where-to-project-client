@@ -15,7 +15,7 @@ export function PostNewStay() {
     stayType: "",
     perNight: null,
     description: "",
-    stayDetails: "",
+    stayDetails: { guests: "" },
     amenities: "",
     stayImage: "",
   });
@@ -23,6 +23,11 @@ export function PostNewStay() {
   const [loading, setLoading] = useState(false);
 
   function handleChange(event) {
+    if (event.target.files) {
+      setForm({ ...form, [event.target.name]: event.target.files[0] });
+      return;
+    }
+
     setForm({ ...form, [event.target.name]: event.target.value });
   }
 
@@ -31,7 +36,7 @@ export function PostNewStay() {
       const uploadData = new FormData();
       uploadData.append("picture", file);
 
-      const response = await apis.post("/picture-stay", uploadData);
+      const response = await apis.post("/stays/pictures", uploadData);
 
       console.log(response.data.url);
 
@@ -50,7 +55,10 @@ export function PostNewStay() {
 
       const stayImage = await handleUpload(form.stayImage);
 
-      const response = await apis.put("stays/create-stay", ...form, stayImage);
+      const response = await apis.post("stays/create-stay", {
+        ...form,
+        stayImage: stayImage,
+      });
       console.log(response);
       setLoading(false);
       navigate("/stays/list-stays"); /* ADICIONAR A PAGE DE CASAS */
@@ -159,7 +167,7 @@ export function PostNewStay() {
           id="stayDetailsCreate"
           name="stayDetails"
           placeholder="quantos quartos?"
-          value={form.stayDetails}
+          value={form.stayDetails.guests}
           required={false}
           onChange={handleChange}
           readOnly={loading}
@@ -178,7 +186,7 @@ export function PostNewStay() {
         <FormField
           type="file"
           label="Foto"
-          id="stayImagePicture"
+          id="stayImageCreate"
           name="stayImage"
           onChange={handleChange}
           required={true}

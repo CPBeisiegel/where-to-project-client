@@ -50,7 +50,7 @@ export function PostNewStay() {
 
       const stayImage = await handleUpload(form.stayImage);
 
-      const response = await apis.post("stays/create-stay", ...form, stayImage);
+      const response = await apis.put("stays/create-stay", ...form, stayImage);
       console.log(response);
       setLoading(false);
       navigate("/stays/list-stays"); /* ADICIONAR A PAGE DE CASAS */

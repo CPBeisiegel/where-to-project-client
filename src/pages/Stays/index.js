@@ -1,5 +1,6 @@
 import { Cards } from "../../components/Card";
-import { SearchBar } from "../../components/Searchbar";
+import { SearchBar } from "../../components/SearchBar";
+import { Container } from "react-bootstrap";
 /* import { InternalNavbar } from "../../components/InternalNavbar"; */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -10,6 +11,7 @@ export function Stays(props) {
   const params = useParams();
 
   const [stays, setStays] = useState([]);
+  const [render, setRender] = useState(true);
 
   useEffect(() => {
     async function fetchStays() {
@@ -21,31 +23,35 @@ export function Stays(props) {
       }
     }
     fetchStays();
-  }, []);
+    setRender(false);
+  }, [render]);
 
   return (
-    <div className="cards">
-      <SearchBar />
+    <Container>
+      <div className="cards mb-3">
+        <SearchBar />
 
-      {/*   <InternalNavbar /> */}
+        {/*   <InternalNavbar /> */}
 
-      {stays
-        .filter((currentStay) => {
-          return currentStay.id === params.id;
-        })
-        .map((currentStay) => {
-          return (
-            <Cards
-              key={currentStay.id}
-              id={currentStay._id}
-              stayTitle={currentStay.stayTitle}
-              stayCountry={currentStay.stayCountry}
-              stayCity={currentStay.stayCity}
-              stayType={currentStay.stayType}
-              stayImage={currentStay.stayImage}
-            />
-          );
-        })}
-    </div>
+        {stays
+          .filter((currentStay) => {
+            return currentStay.id === params.id;
+          })
+          .map((currentStay) => {
+            return (
+              <Cards
+                key={currentStay.id}
+                setRerender={setRender}
+                id={currentStay._id}
+                stayTitle={currentStay.stayTitle}
+                stayCountry={currentStay.stayCountry}
+                stayCity={currentStay.stayCity}
+                stayType={currentStay.stayType}
+                stayImage={currentStay.stayImage}
+              />
+            );
+          })}
+      </div>
+    </Container>
   );
 }

@@ -10,6 +10,7 @@ import { Stays } from "../pages/Stays";
 import { StayDetails } from "../pages/StayDetails/index";
 import { NavbarExterna } from "./Navbar";
 import { PostNewStay } from "../pages/PostNewStay";
+import { EditStay } from "../pages/EditStay";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/stays" element={<Stays />} />
         <Route path="/stays/user-stay/:id" element={<StayDetails />} />
         <Route path="/stays/create-stay" element={<PostNewStay />} />
+        <Route path="/stays/user-stay/update/:id" element={<EditStay />} />
       </Routes>
     </AuthContextComponent>
   );

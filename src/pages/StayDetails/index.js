@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { ButtonGlobal } from "../../components/Button";
+import { Container } from "react-bootstrap";
 
 export function StayDetails() {
   const [stayDetail, setStayDetail] = useState({});
@@ -21,9 +22,9 @@ export function StayDetails() {
 
     fetchStayDetail();
   }, [id]);
-  console.log("AQUIIIII", stayDetail);
+
   return (
-    <div className="detail" key={stayDetail._id}>
+    <Container className="detail" key={stayDetail._id}>
       <img
         src={stayDetail.image}
         alt={stayDetail.stayTitle}
@@ -43,6 +44,6 @@ export function StayDetails() {
           <ButtonGlobal variant="outlined">Voltar</ButtonGlobal>
         </Link>
       </div>
-    </div>
+    </Container>
   );
 }

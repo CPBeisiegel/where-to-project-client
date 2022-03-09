@@ -2,7 +2,7 @@ import { Form, Container } from "react-bootstrap";
 import { FormField } from "../../components/Form";
 import { ErrorAlert } from "../../components/ErrorAlert";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { ButtonGlobal } from "../../components/Button";
 
@@ -249,6 +249,9 @@ export function PostNewStay() {
               "Cadastrar"
             )}
           </ButtonGlobal>
+          <Link style={{ textDecoration: "none" }} to={`/user-home`}>
+            <ButtonGlobal>Voltar</ButtonGlobal>
+          </Link>
           {error ? <ErrorAlert>{error}</ErrorAlert> : null}
         </div>
       </Form>

@@ -20,7 +20,6 @@ function App() {
   return (
     <AuthContextComponent>
       <NavbarExterna />
-
       <Routes>
         <Route path="/" element={<Home />} />
 

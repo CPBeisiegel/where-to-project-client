@@ -11,7 +11,7 @@ export function Review() {
   //console.log("ID", id);
 
   const { loggedInUser } = useContext(AuthContext);
-  //console.log("loggedInUser", loggedInUser);
+  console.log("loggedInUser", loggedInUser.user);
 
   const [currentReview, setCurrentReview] = useState({
     review: "",

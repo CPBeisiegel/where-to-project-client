@@ -1,0 +1,9 @@
+.btn-details {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.btn-buttons {
+  margin: 20px;
+}

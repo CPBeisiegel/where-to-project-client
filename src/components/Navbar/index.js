@@ -10,9 +10,9 @@ export function NavbarExterna() {
 
   useEffect(() => {
     setLoginState(loggedInUser);
-  }, [loggedInUser]);
-
-  console.log(loginState);
+  }, []);
+  console.log(loggedInUser);
+  console.log("Aqui", loginState);
 
   return (
     <Navbar collapseOnSelect expand="lg" style={{ backgroundColor: "#6667AB" }}>

@@ -1,9 +1,10 @@
 import { Cards } from "../../components/Card";
-import { SearchBar } from "../../components/SearchBar";
+import { SearchBar } from "../../components/Searchbar";
 import { Container } from "react-bootstrap";
 import "./Stays.css";
 /* import { InternalNavbar } from "../../components/InternalNavbar"; */
 import { useState, useEffect } from "react";
+
 import apis from "../../apis/api";
 
 export function Stays() {
@@ -11,12 +12,14 @@ export function Stays() {
 
   const [stays, setStays] = useState([]);
   const [render, setRender] = useState(true);
+  const [backup, setBackup] = useState([]);
 
   useEffect(() => {
     async function fetchStays() {
       try {
         const response = await apis.get("/stays/list-stays");
         setStays([...response.data]);
+        setBackup([...response.data]);
       } catch (error) {
         console.error(error);
       }
@@ -25,10 +28,22 @@ export function Stays() {
     setRender(false);
   }, [render]);
 
+  // Essa é a função responsavel por filtrar o state
+  function filterStays(searchParams) {
+    if (searchParams === "") {
+      setStays([...backup]);
+      return;
+    }
+    const filtered = stays.filter((currentStay) =>
+      currentStay.stayTitle.toLowerCase().includes(searchParams.toLowerCase())
+    );
+    setStays(filtered);
+  }
+
   return (
     <Container>
       <div className="search mb-3" style={{ marginTop: "30px" }}>
-        <SearchBar />
+        <SearchBar filterAPI={filterStays} />
       </div>
 
       {/*   <InternalNavbar /> */}

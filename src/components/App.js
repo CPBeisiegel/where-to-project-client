@@ -13,6 +13,7 @@ import { PostNewStay } from "../pages/PostNewStay";
 import { EditStay } from "../pages/EditStay";
 import { UserEditProfile } from "../pages/UserEditProfile";
 import { PostNewComent } from "../pages/PostNewComent/index";
+import { DeleteReview } from "../components/Review/DeleteReview";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/:stayId/create-review" element={<PostNewComent />} />
         <Route path="/reviews/:id/create-review" element={<PostNewComent />} />
         <Route path="/reviews/:id/create-review" element={<PostNewComent />} />
+        <Route path="/review-delete/:reviewId" component={<DeleteReview />} />
       </Routes>
     </AuthContextComponent>
   );

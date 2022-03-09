@@ -1,17 +1,7 @@
 import { Card, Button, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import apis from "../../apis/api";
 
 export function Cards(props) {
-  async function handleDelete() {
-    try {
-      await apis.delete(`/stays/user-stay/delete/${props.id}`);
-      props.setRerender(true);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   return (
     <Card className="card" style={{ width: "18rem", marginTop: "25px" }}>
       <Card.Img variant="top" src={props.stayImage} />
@@ -29,25 +19,7 @@ export function Cards(props) {
         <Link to={`/stays/user-stay/${props.id}`}>
           <Button variant="primary">Mais informações </Button>
         </Link>
-        <Link to={`/stays/user-stay/update/${props.id}`}>
-          <Button variant="primary">Editar </Button>
-        </Link>
-
-        <Link style={{ textDecoration: "none" }} to={`/stays`}>
-          <Button type="button" onClick={handleDelete}>
-            Deletar
-          </Button>
-        </Link>
       </Card.Body>
     </Card>
   );
 }
-/* 
-
-
-{/* 
-{loggedInUser.user._id === stayId ? (
-  <Link to={`/stays/user-stay/update/${props.id}`}>
-    <Button variant="primary">Editar </Button>
-  </Link>
-) : null} */

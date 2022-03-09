@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import apis from "../../apis/api";
 import { Container } from "react-bootstrap";
@@ -9,32 +9,29 @@ import { ButtonGlobal } from "../../components/Button";
 export function Review() {
   const { id } = useParams();
   //console.log("ID", id);
-  const navigate = useNavigate();
 
   const { loggedInUser } = useContext(AuthContext);
   //console.log("loggedInUser", loggedInUser);
 
   const [currentReview, setCurrentReview] = useState({
-    userId: "",
     review: "",
-    stayReview: "",
   });
 
   const [reviews, setReviews] = useState([]);
-  //const [stayId, setStayId] = useState("");
 
-  /* useEffect(() => {
+  useEffect(() => {
     async function fetchReviews() {
       try {
-        const response = await apis.get(`/stays/user-stay/${id}"`);
-        setReviews([...response.data.review]); //?????
-        setStayId = 
+        const response = await apis.get(`/reviews/${id}/reviews`);
+        setReviews([...response.data]);
+
+        console.log("aqui estão os reviews das casas", response.data);
       } catch (error) {
         console.error(error);
       }
     }
-  });
- */
+    fetchReviews();
+  }, []);
 
   function handleChange(event) {
     setCurrentReview({
@@ -52,7 +49,7 @@ export function Review() {
         userId: loggedInUser.user._id,
       });
       console.log("Esse é o response", response);
-      navigate("/");
+      //window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -61,7 +58,7 @@ export function Review() {
   return (
     <div>
       <Container>
-        <h1>Comentar</h1>
+        {!reviews.length ? null : <h5 className="mt-4 mx-4">Comentários</h5>}
 
         <form onSubmit={handleSubmit}>
           <FormField

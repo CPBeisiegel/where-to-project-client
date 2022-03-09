@@ -3,19 +3,27 @@ import { Card, CardGroup, Container } from "react-bootstrap";
 export function HowTo() {
   return (
     <div>
-      <Container className="mt-5 mb-5" style={{ color: "#6667AB" }}>
-        <h1 style={{ color: "#6667AB" }}>
+      <Container
+        className="text-center d-flex flex-column justify-content-center align-items-center mb-4 mt-4"
+        style={{ color: "#6667AB" }}
+      >
+        <h4>
           Tem uma <b>casa</b>, <b>apartamento</b> ou <b>estadia itinerante</b>?
-          Alugue-o! Descubra as vantagens do aluguel entre particulares com o{" "}
+          <br></br>Alugue-o!{" "}
+        </h4>
+        <h5>
+          Descubra as vantagens do aluguel entre particulares com o{" "}
           <b>WHERE TO</b> em 4 passos:
-        </h1>
+        </h5>
       </Container>
 
       <Container className="mt-5 mb-5">
         <CardGroup>
-          <Card bg="light" border="light" style={{ width: "18rem" }}>
+          <Card bg="light" border="light">
             <Card.Img
-              variant="top"
+              className="mt-5 mb-2"
+              width="100px"
+              height="100px"
               src="https://dii3ne04p2g9s.cloudfront.net/img/homepage/ownerblock-image1.4338a2dae418.svg"
             />
             <Card.Body>
@@ -24,9 +32,11 @@ export function HowTo() {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card bg="light" border="light" style={{ width: "18rem" }}>
+          <Card bg="light" border="light">
             <Card.Img
-              variant="top"
+              className="mt-5 mb-2"
+              width="100px"
+              height="100px"
               src="https://dii3ne04p2g9s.cloudfront.net/img/homepage/ownerblock-image2.bceb7891e85c.svg"
             />
             <Card.Body>
@@ -36,9 +46,11 @@ export function HowTo() {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card bg="light" border="light" style={{ width: "18rem" }}>
+          <Card bg="light" border="light">
             <Card.Img
-              variant="top"
+              className="mt-5 mb-2"
+              width="100px"
+              height="100px"
               src="https://dii3ne04p2g9s.cloudfront.net/img/homepage/ownerblock-image3.e5449988511a.svg"
             />
             <Card.Body>
@@ -47,9 +59,11 @@ export function HowTo() {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card bg="light" border="light" style={{ width: "18rem" }}>
+          <Card bg="light" border="light">
             <Card.Img
-              variant="top"
+              className="mt-5 mb-2"
+              width="100px"
+              height="100px"
               src="https://dii3ne04p2g9s.cloudfront.net/img/homepage/ownerblock-image4.1cc0859796c4.svg"
             />
             <Card.Body>
@@ -59,6 +73,13 @@ export function HowTo() {
             </Card.Body>
           </Card>
         </CardGroup>
+      </Container>
+
+      <Container
+        className="text-center d-flex flex-column justify-content-center align-items-center mb-4 mt-4"
+        style={{ color: "#6667AB" }}
+      >
+        <h4>Cadastre-se e explore centenas de possibilidades!</h4>
       </Container>
     </div>
   );

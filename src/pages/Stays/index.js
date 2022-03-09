@@ -1,6 +1,6 @@
 import { Cards } from "../../components/Card";
-import { SearchBar } from "../../components/SearchBar";
-import { Container, Button } from "react-bootstrap";
+import { SearchBar } from "../../components/Searchbar";
+import { Container } from "react-bootstrap";
 import "./Stays.css";
 /* import { InternalNavbar } from "../../components/InternalNavbar"; */
 import { useState, useEffect } from "react";

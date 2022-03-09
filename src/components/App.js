@@ -37,6 +37,7 @@ function App() {
         />
         <Route path="/stays/create-stay" element={<PostNewStay />} />
         <Route path="/stays/user-stay/update/:id" element={<EditStay />} />
+        <Route path="/:stayId/create-review" element={<PostNewComent />} />
         <Route path="/users/profile/update/:id" element={<UserEditProfile />} />
         <Route path="/:stayId/create-review" element={<PostNewComent />} />
         <Route path="/reviews/:id/create-review" element={<PostNewComent />} />

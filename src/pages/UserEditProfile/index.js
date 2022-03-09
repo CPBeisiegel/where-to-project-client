@@ -35,6 +35,10 @@ export function UserEditProfile() {
   }, [id]);
 
   function handleChange(event) {
+    if (event.target.files) {
+      setProfile({ ...profile, [event.target.name]: event.target.files[0] });
+      return;
+    }
     setProfile({ ...profile, [event.target.name]: event.target.value });
   }
 
@@ -43,7 +47,7 @@ export function UserEditProfile() {
       const uploadData = new FormData();
       uploadData.append("picture", file);
 
-      const response = await apis.post("/picture-stay", uploadData);
+      const response = await apis.post("/users/pictures", uploadData);
 
       console.log(response.data.url);
 
@@ -62,11 +66,10 @@ export function UserEditProfile() {
 
       const userImage = await handleUpload(profile.userImage);
 
-      const result = await apis.patch(
-        `/users/profile/update/${id}`,
+      const result = await apis.patch(`/users/profile/update/${id}`, {
         ...profile,
-        userImage
-      );
+        userImage: userImage,
+      });
       console.log(result);
       setLoading(false);
       navigate("/user-home");
@@ -150,6 +153,7 @@ export function UserEditProfile() {
               "Editar"
             )}
           </ButtonGlobal>
+
           <Link style={{ textDecoration: "none" }} to={`/user-home`}>
             <ButtonGlobal>Voltar</ButtonGlobal>
           </Link>

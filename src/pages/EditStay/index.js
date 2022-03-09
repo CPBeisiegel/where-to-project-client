@@ -20,7 +20,7 @@ export function EditStay() {
     stayCountry: "",
     stayCity: "",
     stayType: "",
-    perNight: null,
+    perNight: "",
     description: "",
     stayDetails: { ...details },
     amenities: "",

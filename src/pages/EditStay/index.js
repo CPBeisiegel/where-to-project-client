@@ -10,14 +10,19 @@ import apis from "../../apis/api";
 export function EditStay() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [details, setDetails] = useState({
+    guests: "",
+    bedroom: "",
+    bathroom: "",
+  });
   const [form, setForm] = useState({
     stayTitle: "",
     stayCountry: "",
     stayCity: "",
     stayType: "",
-    perNight: null,
+    perNight: "",
     description: "",
-    stayDetails: { guests: "" },
+    stayDetails: { ...details },
     amenities: "",
     stayImage: "",
   });
@@ -44,6 +49,15 @@ export function EditStay() {
     }
 
     setForm({ ...form, [event.target.name]: event.target.value });
+  }
+
+  function handleStayDetails(event) {
+    setDetails({ ...details, [event.target.name]: event.target.value });
+    setForm({
+      ...form,
+      stayDetails: { ...details },
+    });
+    console.log(form);
   }
 
   async function handleUpload(file) {
@@ -76,7 +90,7 @@ export function EditStay() {
       });
       console.log(result);
       setLoading(false);
-      navigate("/stays/list-stays"); /* ADICIONAR A PAGE DE CASAS */
+      navigate("/stays"); /* ADICIONAR A PAGE DE CASAS */
     } catch (error) {
       setLoading(false);
       setError(error);
@@ -97,7 +111,7 @@ export function EditStay() {
       <Form className="mb-3" onSubmit={handleSubmit}>
         <FormField /* stayTitle */
           label="Nome da Estadia"
-          id="stayTitleEdit"
+          id="stayTitleCreate"
           name="stayTitle"
           value={form.stayTitle}
           required={true}
@@ -106,7 +120,7 @@ export function EditStay() {
         />
         <FormField
           label="País"
-          id="stayCountryEdit"
+          id="stayCountryCreate"
           name="stayCountry"
           value={form.stayCountry}
           required={true}
@@ -116,7 +130,7 @@ export function EditStay() {
         {/* stayCountry */}
         <FormField
           label="Cidade"
-          id="stayCityEdit"
+          id="stayCityCreate"
           name="stayCity"
           value={form.stayCity}
           required={true}
@@ -127,9 +141,11 @@ export function EditStay() {
         <p>Tipo de Estadia:</p>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
-            type="checkbox"
+            type="radio"
             label="House"
-            id="stayTypeEdit"
+            id="stayTypeCreate"
+            value="House"
+            checked={form.stayType === "House"}
             name="stayType"
             required={true}
             onChange={handleChange}
@@ -137,9 +153,11 @@ export function EditStay() {
           />{" "}
           {/* stayType ENUM */}
           <Form.Check
-            type="checkbox"
+            type="radio"
             label="Apartament"
-            id="stayTypeEdit"
+            id="stayTypeCreate"
+            value="Apartament"
+            checked={form.stayType === "Apartament"}
             name="stayType"
             required={true}
             onChange={handleChange}
@@ -147,9 +165,11 @@ export function EditStay() {
           />{" "}
           {/* stayType ENUM */}
           <Form.Check
-            type="checkbox"
+            type="radio"
             label="Motorhome"
-            id="stayTypeEdit"
+            id="stayTypeCreate"
+            value="Motorhome"
+            checked={form.stayType === "Motorhome"}
             name="stayType"
             required={true}
             onChange={handleChange}
@@ -160,7 +180,7 @@ export function EditStay() {
         <FormField
           type="number"
           label="Preço por noite"
-          id="perNightEdit"
+          id="perNightCreate"
           name="perNight"
           value={form.perNight}
           required={false}
@@ -170,7 +190,7 @@ export function EditStay() {
         {/* perNight */}
         <FormField
           label="Descrição"
-          id="descriptionEdit"
+          id="descriptionCreate"
           name="description"
           value={form.description}
           required={true}
@@ -178,31 +198,48 @@ export function EditStay() {
           readOnly={loading}
         />{" "}
         {/* description */}
+        <p>Detalhes da Estadia:</p>
         <FormField
-          label="Detalhes da Estadia"
-          id="stayDetailsEdit"
-          name="stayDetails"
-          placeholder="quantos quartos?"
+          label="Número de pessoas"
+          type="number"
+          id="stayDetailsCreate"
+          name="guests"
+          placeholder="quantos pessoas?"
           value={form.stayDetails.guests}
           required={false}
-          onChange={handleChange}
+          onChange={handleStayDetails}
           readOnly={loading}
         />{" "}
         {/* stayDetails */}
         <FormField
-          label="Facilidades"
-          id="amenitiesEdit"
-          name="amenities"
-          value={form.amenities}
+          label="Quartos"
+          type="number"
+          id="stayDetailsCreate"
+          name="bedroom"
+          placeholder="quantos quartos?"
+          value={form.stayDetails.bedroom}
           required={false}
-          onChange={handleChange}
+          onChange={handleStayDetails}
           readOnly={loading}
         />{" "}
+        {/* stayDetails */}
+        <FormField
+          label="Banheiros"
+          type="number"
+          id="stayDetailsCreate"
+          name="bathroom"
+          placeholder="quantos banheiros?"
+          value={form.stayDetails.bathroom}
+          required={false}
+          onChange={handleStayDetails}
+          readOnly={loading}
+        />{" "}
+        {/* stayDetails */}
         {/* amenities GUESTS BEDROOM BATHROOM */}
         <FormField
           type="file"
           label="Foto"
-          id="stayImagePicture"
+          id="stayImageCreate"
           name="stayImage"
           onChange={handleChange}
           required={true}
@@ -219,6 +256,7 @@ export function EditStay() {
               "Editar"
             )}
           </ButtonGlobal>
+
           <Link style={{ textDecoration: "none" }} to={`/stays`}>
             <ButtonGlobal>Voltar</ButtonGlobal>
           </Link>

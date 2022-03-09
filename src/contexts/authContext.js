@@ -12,19 +12,23 @@ function AuthContextComponent(props) {
 
     const parsedStoredUser = JSON.parse(storedUser || '""');
 
-    if (parsedStoredUser.user) {
+    if (parsedStoredUser.token) {
       setLoggedInUser({ ...parsedStoredUser });
+    } else {
+      setLoggedInUser(null);
     }
   }, []);
 
-  /*   function handleLogOut() {
+  function handleLogOut() {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser({ token: "", user: {} });
     history("/login");
-  } */
+  }
 
   return (
-    <AuthContext.Provider value={{ loggedInUser, setLoggedInUser }}>
+    <AuthContext.Provider
+      value={{ loggedInUser, setLoggedInUser, handleLogOut }}
+    >
       {props.children}
     </AuthContext.Provider>
   );

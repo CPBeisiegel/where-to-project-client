@@ -8,6 +8,11 @@ import { ButtonGlobal } from "../../components/Button";
 
 export function PostNewStay() {
   const navigate = useNavigate();
+  const [details, setDetails] = useState({
+    guests: "",
+    bedroom: "",
+    bathroom: "",
+  });
   const [form, setForm] = useState({
     stayTitle: "",
     stayCountry: "",
@@ -15,7 +20,7 @@ export function PostNewStay() {
     stayType: "",
     perNight: null,
     description: "",
-    stayDetails: { guests: "" },
+    stayDetails: { ...details },
     amenities: "",
     stayImage: "",
   });
@@ -29,6 +34,15 @@ export function PostNewStay() {
     }
 
     setForm({ ...form, [event.target.name]: event.target.value });
+  }
+
+  function handleStayDetails(event) {
+    setDetails({ ...details, [event.target.name]: event.target.value });
+    setForm({
+      ...form,
+      stayDetails: { ...details },
+    });
+    console.log(form);
   }
 
   async function handleUpload(file) {
@@ -61,7 +75,7 @@ export function PostNewStay() {
       });
       console.log(response);
       setLoading(false);
-      navigate("/stays/list-stays"); /* ADICIONAR A PAGE DE CASAS */
+      navigate("/stays"); /* ADICIONAR A PAGE DE CASAS */
     } catch (error) {
       setLoading(false);
       setError(error);
@@ -111,9 +125,11 @@ export function PostNewStay() {
         <p>Tipo de Estadia:</p>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
-            type="checkbox"
+            type="radio"
             label="House"
             id="stayTypeCreate"
+            value="House"
+            checked={form.stayType === "House"}
             name="stayType"
             required={true}
             onChange={handleChange}
@@ -121,9 +137,11 @@ export function PostNewStay() {
           />{" "}
           {/* stayType ENUM */}
           <Form.Check
-            type="checkbox"
+            type="radio"
             label="Apartament"
             id="stayTypeCreate"
+            value="Apartament"
+            checked={form.stayType === "Apartament"}
             name="stayType"
             required={true}
             onChange={handleChange}
@@ -131,9 +149,11 @@ export function PostNewStay() {
           />{" "}
           {/* stayType ENUM */}
           <Form.Check
-            type="checkbox"
+            type="radio"
             label="Motorhome"
             id="stayTypeCreate"
+            value="Motorhome"
+            checked={form.stayType === "Motorhome"}
             name="stayType"
             required={true}
             onChange={handleChange}
@@ -162,14 +182,40 @@ export function PostNewStay() {
           readOnly={loading}
         />{" "}
         {/* description */}
+        <p>Detalhes da Estadia:</p>
         <FormField
-          label="Detalhes da Estadia"
+          label="Número de pessoas"
+          type="number"
           id="stayDetailsCreate"
-          name="stayDetails"
-          placeholder="quantos quartos?"
+          name="guests"
+          placeholder="quantos pessoas?"
           value={form.stayDetails.guests}
           required={false}
-          onChange={handleChange}
+          onChange={handleStayDetails}
+          readOnly={loading}
+        />{" "}
+        {/* stayDetails */}
+        <FormField
+          label="Quartos"
+          type="number"
+          id="stayDetailsCreate"
+          name="bedroom"
+          placeholder="quantos quartos?"
+          value={form.stayDetails.bedroom}
+          required={false}
+          onChange={handleStayDetails}
+          readOnly={loading}
+        />{" "}
+        {/* stayDetails */}
+        <FormField
+          label="Banheiros"
+          type="number"
+          id="stayDetailsCreate"
+          name="bathroom"
+          placeholder="quantos banheiros?"
+          value={form.stayDetails.bathroom}
+          required={false}
+          onChange={handleStayDetails}
           readOnly={loading}
         />{" "}
         {/* stayDetails */}

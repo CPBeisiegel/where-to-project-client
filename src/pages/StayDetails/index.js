@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { ButtonGlobal } from "../../components/Button";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { Review } from "../../components/Review";
 
 export function StayDetails() {
@@ -24,6 +24,15 @@ export function StayDetails() {
     fetchStayDetail();
   }, [id]);
 
+  async function handleDelete() {
+    try {
+      await apis.delete(`/stays/user-stay/delete/${id}`);
+      id.setRerender(true);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <Container className="detail" key={stayDetail._id}>
       <img
@@ -43,6 +52,14 @@ export function StayDetails() {
 
         <Link style={{ textDecoration: "none" }} to={`/stays`}>
           <ButtonGlobal variant="outlined">Voltar</ButtonGlobal>
+        </Link>
+        <Link to={`/stays/user-stay/update/${id}`}>
+          <Button variant="primary">Editar </Button>
+        </Link>
+        <Link style={{ textDecoration: "none" }} to={`/stays`}>
+          <Button type="button" onClick={handleDelete}>
+            Deletar
+          </Button>
         </Link>
       </div>
       <Review />

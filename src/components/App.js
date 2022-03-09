@@ -23,6 +23,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route
           path="/user-home"
           element={<ProtectedRoute component={UserHome} />}
@@ -30,9 +31,13 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/stays" element={<Stays />} />
-        <Route path="/stays/user-stay/:id" element={<StayDetails />} />
+        <Route
+          path="/stays/user-stay/:id"
+          element={<ProtectedRoute component={StayDetails} />}
+        />
         <Route path="/stays/create-stay" element={<PostNewStay />} />
         <Route path="/stays/user-stay/update/:id" element={<EditStay />} />
+        <Route path="/:stayId/create-review" element={<PostNewComent />} />
         <Route path="/users/profile/update/:id" element={<UserEditProfile />} />
         <Route path="/:stayId/create-review" element={<PostNewComent />} />
         <Route path="/reviews/:id/create-review" element={<PostNewComent />} />

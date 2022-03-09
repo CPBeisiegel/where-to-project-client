@@ -49,7 +49,7 @@ export function Review() {
         userId: loggedInUser.user._id,
       });
       console.log("Esse é o response", response);
-      //window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }

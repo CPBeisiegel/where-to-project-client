@@ -5,10 +5,11 @@ import apis from "../../apis/api";
 import { Container } from "react-bootstrap";
 import { FormField } from "../../components/Form";
 import { ButtonGlobal } from "../../components/Button";
+import { convertDate } from "../../assets/functions/concertDate";
 
 export function Review() {
   const { id } = useParams();
-  //console.log("ID", id);
+  console.log("ID", id);
 
   const { loggedInUser } = useContext(AuthContext);
   console.log("loggedInUser", loggedInUser.user);
@@ -58,8 +59,7 @@ export function Review() {
   return (
     <div>
       <Container>
-        {!reviews.length ? null : <h5 className="mt-4 mx-4">Comentários</h5>}
-
+        <h5 className="mt-4">Escreva um comentário para o proprietário!</h5>
         <form onSubmit={handleSubmit}>
           <FormField
             type="text"
@@ -76,26 +76,46 @@ export function Review() {
           </div>
         </form>
 
-        <h5>Comentários</h5>
+        {!reviews.length ? null : <h5 className="mt-4 mx-4">Comentários</h5>}
         {reviews.map((review, index) => {
           return (
             <div
               key={index}
               className="d-flex justify-content-start align-items-start ms-3"
             >
-              <div className="w-100">
-                <h4
-                  className="mt-2 px-1"
-                  style={{ fontSize: "18px", width: "33vw", maxWidth: "480px" }}
-                >
-                  {review.userId.userName}
-                </h4>
-                <p
-                  className="textsFonts ps-1"
-                  style={{ fontSize: "14px", width: "33vw", maxWidth: "480px" }}
-                >
-                  {review.review}
-                </p>
+              <div className="d-flex justify-content-start align-items-start ms-3">
+                <div className="w-100">
+                  <h4
+                    className="mt-2 px-1"
+                    style={{
+                      fontSize: "18px",
+                      width: "33vw",
+                      maxWidth: "480px",
+                    }}
+                  >
+                    {review.userId.userName}
+                  </h4>
+                  <p
+                    className="textsFonts text-secondary mt-1 ps-1"
+                    style={{
+                      fontSize: "12px",
+                      width: "33vw",
+                      maxWidth: "480px",
+                    }}
+                  >
+                    {convertDate(review.date)}
+                  </p>
+                  <p
+                    className="textsFonts ps-1"
+                    style={{
+                      fontSize: "14px",
+                      width: "33vw",
+                      maxWidth: "480px",
+                    }}
+                  >
+                    {review.review}
+                  </p>
+                </div>
               </div>
             </div>
           );

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { ButtonGlobal } from "../../components/Button";
 import { Container } from "react-bootstrap";
+import { Review } from "../../components/Review";
 
 export function StayDetails() {
   const [stayDetail, setStayDetail] = useState({});
@@ -44,6 +45,7 @@ export function StayDetails() {
           <ButtonGlobal variant="outlined">Voltar</ButtonGlobal>
         </Link>
       </div>
+      <Review />
     </Container>
   );
 }

@@ -15,7 +15,7 @@ export function SearchBar(props) {
             props.filterAPI(event.target.value);
           }}
         />
-        <Button variant="outline-success">Search</Button>
+        <Button variant="outline-dark">Search</Button>
       </Form>
     </>
   );

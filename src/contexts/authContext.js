@@ -22,7 +22,7 @@ function AuthContextComponent(props) {
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser({ token: "", user: {} });
-    history("/login");
+    history("/");
   }
 
   return (

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { ButtonGlobal } from "../../components/Button";
+import "./PostNewStay.css"
 
 export function PostNewStay() {
   const navigate = useNavigate();
@@ -240,7 +241,11 @@ export function PostNewStay() {
         />{" "}
         {/* stayImage */}
         <div style={{ marginTop: "15px" }}>
-          <ButtonGlobal type="submit" disable={loading}>
+          <ButtonGlobal
+            variant="outline-success"
+            type="submit"
+            disable={loading}
+          >
             {loading ? (
               <div className="spinner-border" role="status">
                 <span className="visually-hidden">Loading...</span>
@@ -249,8 +254,10 @@ export function PostNewStay() {
               "Cadastrar"
             )}
           </ButtonGlobal>
-          <Link style={{ textDecoration: "none" }} to={`/user-home`}>
-            <ButtonGlobal>Voltar</ButtonGlobal>
+          <Link style={{ textDecoration: "none" }} to={`/stays`}>
+            <ButtonGlobal variant="outline-light" className="btn-back">
+              Voltar
+            </ButtonGlobal>
           </Link>
           {error ? <ErrorAlert>{error}</ErrorAlert> : null}
         </div>

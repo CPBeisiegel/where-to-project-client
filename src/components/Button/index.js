@@ -4,7 +4,7 @@ export function ButtonGlobal(props) {
   return (
     <>
       <Button
-        variant="primary"
+        variant={props.variant}
         size="lg"
         type={props.type}
         className={props.className}

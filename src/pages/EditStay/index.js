@@ -2,6 +2,7 @@ import { Form, Container } from "react-bootstrap";
 import { FormField } from "../../components/Form";
 import { ButtonGlobal } from "../../components/Button";
 import { ErrorAlert } from "../../components/ErrorAlert";
+import "./EditStay.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
@@ -247,7 +248,11 @@ export function EditStay() {
         />{" "}
         {/* stayImage */}
         <div style={{ marginTop: "15px" }}>
-          <ButtonGlobal type="submit" disable={loading}>
+          <ButtonGlobal
+            variant="outline-success"
+            type="submit"
+            disable={loading}
+          >
             {loading ? (
               <div className="spinner-border" role="status">
                 <span className="visually-hidden">Loading...</span>
@@ -257,8 +262,13 @@ export function EditStay() {
             )}
           </ButtonGlobal>
 
-          <Link style={{ textDecoration: "none" }} to={`/stays`}>
-            <ButtonGlobal>Voltar</ButtonGlobal>
+          <Link
+            style={{ textDecoration: "none" }}
+            to={`/stays/user-stay/${id}`}
+          >
+            <ButtonGlobal variant="outline-light" className="btn-back">
+              Voltar
+            </ButtonGlobal>
           </Link>
 
           {error ? <ErrorAlert>{error}</ErrorAlert> : null}

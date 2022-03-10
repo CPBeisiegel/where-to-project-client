@@ -27,6 +27,11 @@ function App() {
           path="/user-home"
           element={<ProtectedRoute component={UserHome} />}
         />
+        <Route
+          path="/users/profile/update/:id"
+          element={<ProtectedRoute component={UserEditProfile} />}
+        />
+
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/stays" element={<Stays />} />
@@ -42,12 +47,19 @@ function App() {
           path="/stays/user-stay/:id"
           element={<ProtectedRoute component={StayDetails} />}
         />
+
+        <Route
+          path="/reviews/:id/create-review"
+          element={<ProtectedRoute component={PostNewComent} />}
+        />
+        <Route
+          path="/review-delete/:reviewId"
+          component={<ProtectedRoute component={DeleteReview} />}
+        />
         <Route
           path="/users/profile/update/:id"
           element={<ProtectedRoute component={UserEditProfile} />}
         />
-        <Route path="/reviews/:id/create-review" element={<PostNewComent />} />
-        <Route path="/review-delete/:reviewId" component={<DeleteReview />} />
       </Routes>
     </AuthContextComponent>
   );

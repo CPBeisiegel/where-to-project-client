@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { ButtonGlobal } from "../../components/Button";
-import { Container, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Review } from "../../components/Review";
 import { AuthContext } from "../../contexts/authContext";
 import "./StayDetails.css";
@@ -192,23 +192,30 @@ export function StayDetails() {
             <div className="btn-details">
               <div>
                 <Link style={{ textDecoration: "none" }} to={`/stays`}>
-                  <ButtonGlobal variant="outlined">Voltar</ButtonGlobal>
+                  <ButtonGlobal variant="outline-light" className="btn-back">
+                    Voltar
+                  </ButtonGlobal>
                 </Link>
               </div>
               <div className="btn-buttons">
                 {stayDetail.userId === loggedInUser.user._id && (
                   <>
-                    <Link to={`/stays/user-stay/update/${id}`}>
-                      <Button variant="success">Editar </Button>
+                    <Link
+                      style={{ marginRight: "10px" }}
+                      to={`/stays/user-stay/update/${id}`}
+                    >
+                      <ButtonGlobal variant="outline-success">
+                        Editar
+                      </ButtonGlobal>
                     </Link>
                     <Link style={{ textDecoration: "none" }} to={`/stays`}>
-                      <Button
-                        variant="danger"
+                      <ButtonGlobal
+                        variant="outline-danger"
                         type="button"
                         onClick={handleDelete}
                       >
                         Deletar
-                      </Button>
+                      </ButtonGlobal>
                     </Link>
                   </>
                 )}

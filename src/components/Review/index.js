@@ -59,8 +59,8 @@ export function Review() {
   return (
     <div>
       <Container>
-        <h5 className="mt-4" style={{ color: "#6667AB" }}>
-          Escreva um comentário para o proprietário!
+        <h5 className="mt-4 " style={{ color: "#6667AB" }}>
+          Escreva um comentário para o proprietário:
         </h5>
         <form onSubmit={handleSubmit}>
           <FormField
@@ -73,7 +73,7 @@ export function Review() {
             required={true}
           />
 
-          <div className="mt-4">
+          <div className="mt-4 mb-4">
             <ButtonGlobal type="submit">Publicar</ButtonGlobal>
           </div>
         </form>

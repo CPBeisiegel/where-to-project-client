@@ -1,6 +1,6 @@
 import { Form, FormControl, Button } from "react-bootstrap";
 
-export function SearchBar(props) {
+export default function SearchBar(props) {
   return (
     <>
       <Form className="d-flex">

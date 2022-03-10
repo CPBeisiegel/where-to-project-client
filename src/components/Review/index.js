@@ -59,11 +59,13 @@ export function Review() {
   return (
     <div>
       <Container>
-        <h5 className="mt-4">Escreva um comentário para o proprietário!</h5>
+        <h5 className="mt-4" style={{ color: "#6667AB" }}>
+          Escreva um comentário para o proprietário!
+        </h5>
         <form onSubmit={handleSubmit}>
           <FormField
             type="text"
-            label="Deixe seu comentário"
+            placeholder="Escreva aqui"
             id="createReview"
             name="review"
             onChange={handleChange}
@@ -71,7 +73,7 @@ export function Review() {
             required={true}
           />
 
-          <div style={{ marginTop: "15px" }}>
+          <div className="mt-4">
             <ButtonGlobal type="submit">Publicar</ButtonGlobal>
           </div>
         </form>
@@ -81,12 +83,12 @@ export function Review() {
           return (
             <div
               key={index}
-              className="d-flex justify-content-start align-items-start ms-3"
+              className="d-flex justify-content-start align-items-center ms-3 mt-3 mb-3"
             >
               <div className="d-flex justify-content-start align-items-start ms-3">
                 <div className="w-100">
                   <h4
-                    className="mt-2 px-1"
+                    className=" mt-2 px-1"
                     style={{
                       fontSize: "18px",
                       width: "33vw",
@@ -116,6 +118,11 @@ export function Review() {
                     {review.review}
                   </p>
                 </div>
+                {review.userId._id === loggedInUser.user._id ? (
+                  <div className="container d-flex flex-column">
+                    <i className="fas fa-trash p-2 text-dark"></i>
+                  </div>
+                ) : null}
               </div>
             </div>
           );

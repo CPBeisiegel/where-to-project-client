@@ -23,7 +23,6 @@ function App() {
       <NavbarExterna />
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route
           path="/user-home"
           element={<ProtectedRoute component={UserHome} />}
@@ -32,15 +31,21 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/stays" element={<Stays />} />
         <Route
+          path="/stays/create-stay"
+          element={<ProtectedRoute component={PostNewStay} />}
+        />
+        <Route
+          path="/stays/user-stay/update/:id"
+          element={<ProtectedRoute component={EditStay} />}
+        />
+        <Route
           path="/stays/user-stay/:id"
           element={<ProtectedRoute component={StayDetails} />}
         />
-        <Route path="/stays/create-stay" element={<PostNewStay />} />
-        <Route path="/stays/user-stay/update/:id" element={<EditStay />} />
-        <Route path="/:stayId/create-review" element={<PostNewComent />} />
-        <Route path="/users/profile/update/:id" element={<UserEditProfile />} />
-        <Route path="/:stayId/create-review" element={<PostNewComent />} />
-        <Route path="/reviews/:id/create-review" element={<PostNewComent />} />
+        <Route
+          path="/users/profile/update/:id"
+          element={<ProtectedRoute component={UserEditProfile} />}
+        />
         <Route path="/reviews/:id/create-review" element={<PostNewComent />} />
         <Route path="/review-delete/:reviewId" component={<DeleteReview />} />
       </Routes>

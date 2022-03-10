@@ -1,5 +1,6 @@
 import { Card, Button, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./Card.css";
 
 export function Cards(props) {
   return (
@@ -17,7 +18,9 @@ export function Cards(props) {
         </ListGroup>
 
         <Link to={`/stays/user-stay/${props.id}`}>
-          <Button variant="primary">Mais informações </Button>
+          <Button variant="outline-light" className="btn-card">
+            Ver detalhes{" "}
+          </Button>
         </Link>
       </Card.Body>
     </Card>

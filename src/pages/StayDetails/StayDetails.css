@@ -2,8 +2,15 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
 }
 
 .btn-buttons {
   margin: 20px;
+}
+.btn-back {
+  background-color: #27293d;
+}
+btn-back:hover {
+  background-color: #27293d;
 }

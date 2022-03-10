@@ -25,7 +25,6 @@ export function UserEditProfile() {
     async function fetchUser() {
       try {
         const response = await apis.get(`/users/profile/${id}`);
-        console.log("AQUIIIIII", response.data);
         setProfile({ ...response.data });
       } catch (error) {
         console.log(error);

@@ -1,4 +1,4 @@
-import { Nav } from "react-bootstrap";
+/* import { Nav } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 import apis from "../../apis/api";
@@ -10,7 +10,7 @@ function InternalNavbar() {
 .filter
 .includes
  */
-  useEffect(() => {
+/*   useEffect(() => {
     async function fetchStayTypes() {
       try {
         const result = await apis.get("/stays/list-stays");
@@ -20,9 +20,9 @@ function InternalNavbar() {
       }
     }
     fetchStayTypes();
-  }, []);
+  }, []);  */
 
-  /*  function filterStayTypes(event) {
+/*  function filterStayTypes(event) {
     const name = event.target.name;
 
    const filterTypes = stayTypes.filter((currentStay) => {
@@ -37,7 +37,7 @@ function InternalNavbar() {
   }
   */
 
-  console.log(stayTypes);
+/*   console.log(stayTypes);
   return (
     <>
       <Nav variant="tabs" defaultActiveKey="/home">
@@ -62,3 +62,4 @@ function InternalNavbar() {
 }
 
 export { InternalNavbar };
+ */

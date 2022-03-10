@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import apis from "../../apis/api";
-import { Button } from "react-bootstrap";
-/* import { Cards } from "../../components/Card"; */
+import { Button, Container } from "react-bootstrap";
+import { Cards } from "../../components/Card";
 
 function UserHome() {
   const { id } = useParams();
@@ -12,7 +12,7 @@ function UserHome() {
     email: "",
     userImage: "",
   });
-  /*   const [myStays, setMyStays] = useState([]); */
+  const [myStays, setMyStays] = useState([]);
 
   useEffect(() => {
     async function fetchUser() {
@@ -27,10 +27,10 @@ function UserHome() {
     fetchUser();
   }, [id]);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     async function fetchMyStays() {
       try {
-        const response = await apis.get("/stays/user-stay/my-stays");
+        const response = await apis.get("/stays/myStays");
         console.log("Esse", response.data);
         setMyStays([...response.data]);
       } catch (error) {
@@ -38,7 +38,7 @@ function UserHome() {
       }
     }
     fetchMyStays();
-  }, []); */
+  }, []);
 
   return (
     <div className="container mt-4 mb-4 d-flex flex-column justify-content-center align-items-center">
@@ -72,31 +72,33 @@ function UserHome() {
         </div>
       </div>
 
-      <div className="tab-block d-flex justify-content-around">
-        <p>Pagina dos cards</p>
-      </div>
+      <Container>
+        <div className="tab-block d-flex justify-content-around">
+          <h2>Estadias Cadastradas</h2>
+        </div>
 
-      <div>
-        <Link to={`/stays/create-stay`}>
-          <Button variant="secondary"> Cadastrar uma estadia</Button>
-        </Link>
-      </div>
+        <div>
+          <Link to={`/stays/create-stay`}>
+            <Button variant="secondary"> Cadastrar uma estadia</Button>
+          </Link>
+        </div>
+        <div className="cards" style={{ marginTop: "15px" }}>
+          {myStays.map((currentStay) => {
+            return (
+              <Cards
+                key={currentStay._id}
+                id={currentStay._id}
+                stayTitle={currentStay.stayTitle}
+                stayCountry={currentStay.stayCountry}
+                stayCity={currentStay.stayCity}
+                stayType={currentStay.stayType}
+                stayImage={currentStay.stayImage}
+              />
+            );
+          })}
+        </div>
+      </Container>
     </div>
-    /*   <div className="cards" style={{ marginTop: "15px" }}>
-        {myStays.map((currentStay) => {
-          return (
-            <Cards
-              key={currentStay._id}
-              id={currentStay._id}
-              stayTitle={currentStay.stayTitle}
-              stayCountry={currentStay.stayCountry}
-              stayCity={currentStay.stayCity}
-              stayType={currentStay.stayType}
-              stayImage={currentStay.stayImage}
-            />
-          );
-        })}
-      </div> */
   );
 }
 

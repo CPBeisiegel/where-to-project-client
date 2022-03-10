@@ -42,8 +42,15 @@ export function NavbarExterna() {
 
           {loginState ? (
             <NavDropdown
+<<<<<<< HEAD
               style={{ textDecoration: "none", color: "white" }}
               title="Minha Página"
+=======
+              title="Minhas Paginas"
+              id="nav-dropdown"
+              href="#"
+              className="nav"
+>>>>>>> 0f9b332911500f56298779b9179a2f8cb76017d8
             >
               <NavDropdown.Item href={loginState ? "/user-home" : "login"}>
                 {loginState ? " Perfil" : "Login"}

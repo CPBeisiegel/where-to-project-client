@@ -111,18 +111,7 @@ export function UserEditProfile() {
           required={true}
           readOnly={loading}
         />
-        {/* 
-        <FormField
-          type="password"
-          label="Senha"
-          id="passwordEdit"
-          required={true}
-          readOnly={loading}
-          name="password"
-          value={profile.password}
-          onChange={handleChange}
-          pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
-        /> */}
+
         <FormField
           type="number"
           label="Número de telefone"
@@ -143,7 +132,11 @@ export function UserEditProfile() {
           readOnly={loading}
         />
         <div style={{ marginTop: "15px" }}>
-          <ButtonGlobal type="submit" disable={loading}>
+          <ButtonGlobal
+            variant="outline-success"
+            type="submit"
+            disable={loading}
+          >
             {loading ? (
               <div className="spinner-border" role="status">
                 <span className="visually-hidden">Loading...</span>
@@ -154,7 +147,9 @@ export function UserEditProfile() {
           </ButtonGlobal>
 
           <Link style={{ textDecoration: "none" }} to={`/user-home`}>
-            <ButtonGlobal>Voltar</ButtonGlobal>
+            <ButtonGlobal variant="outline-light" className="btn-back">
+              Voltar
+            </ButtonGlobal>
           </Link>
 
           {error ? <ErrorAlert>{error}</ErrorAlert> : null}

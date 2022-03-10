@@ -31,7 +31,13 @@ export function StayDetails() {
     },
     amenities: [],
     stayImage: "",
-    userId: "",
+    userId: {
+      userName: "",
+      email: "",
+      password: "",
+      userPhone: "",
+      userImage: "",
+    },
   });
   const { id } = useParams();
 
@@ -52,6 +58,7 @@ export function StayDetails() {
     async function fetchStayDetail() {
       try {
         const result = await apis.get(`/stays/user-stay/${id}`);
+        console.log("ESEE", result.data[0]);
         setStayDetail({ ...result.data[0] });
       } catch (error) {
         console.log(error);
@@ -150,7 +157,7 @@ export function StayDetails() {
                 <div className="second d-flex mt-0 p-2 align-items-center justify-content-center">
                   <div className="image ms-3 me-0 d-flex flex-column align-items-center justify-content-center">
                     <img
-                      src={stayUser.userImage}
+                      src={stayDetail.userId.userImage}
                       alt="profile"
                       className="rounded-circle profPicAd"
                       width="90px"
@@ -164,7 +171,7 @@ export function StayDetails() {
                       <p className="mb-2 ms-0 mt-2">Entre em contato</p>
                       {/* CONTATO */}
 
-                      <a href={`mailto:${stayUser.email}`}>
+                      <a href={`mailto:${stayDetail.userId.email}`}>
                         <i
                           className="fas fa-envelope icon-style text-dark fa-lg mt-0 ms-0"
                           style={{ fontSize: "20px" }}
@@ -179,7 +186,7 @@ export function StayDetails() {
                         Proprietário
                       </p>
                       <p className="localizationFont my-2 mx-4 text-dark">
-                        {stayUser.userName}
+                        {stayDetail.userId.userName}
                       </p>
                       <p className="localizationFont my-0 mx-4 text-dark fst-italic">
                         {stayDetail.stayCity}, {stayDetail.stayCountry}

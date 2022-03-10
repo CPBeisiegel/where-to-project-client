@@ -10,7 +10,7 @@ export function NavbarExterna() {
 
   useEffect(() => {
     setLoginState(loggedInUser);
-  }, []);
+  }, [loggedInUser]);
   console.log(loggedInUser);
   console.log("Aqui", loginState);
 
@@ -30,13 +30,11 @@ export function NavbarExterna() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto navbar-brand ">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href={loginState.token === "" ? "/login" : "/user-home"}>
-              {loginState.token === "" ? "Login" : "Minha Página"}
+            <Nav.Link href={loginState ? "/user-home" : "login"}>
+              {loginState ? "Minha Página" : "Login"}
             </Nav.Link>
 
-            {loginState.token === "" ? (
-              <Nav.Link href="/signup">Cadastrar</Nav.Link>
-            ) : (
+            {loginState ? (
               <ButtonGlobal
                 type="button"
                 className="btn btn-light"
@@ -44,6 +42,8 @@ export function NavbarExterna() {
               >
                 Sair
               </ButtonGlobal>
+            ) : (
+              <Nav.Link href="/signup">Cadastrar</Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>

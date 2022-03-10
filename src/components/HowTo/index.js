@@ -1,11 +1,12 @@
 import { Card, CardGroup, Container } from "react-bootstrap";
+import "./style.css";
 
 export function HowTo() {
   return (
     <div>
       <Container
         className="text-center d-flex flex-column justify-content-center align-items-center mb-4 mt-4"
-        style={{ color: "#6667AB" }}
+        style={{ color: "#27293d " }}
       >
         <h4>
           Tem uma <b>casa</b>, <b>apartamento</b> ou <b>estadia itinerante</b>?
@@ -17,57 +18,57 @@ export function HowTo() {
         </h5>
       </Container>
 
-      <Container className="mt-5 mb-5">
+      <Container className="mt-5 mb-5 " bg="light" border="light">
         <CardGroup>
-          <Card bg="light" border="light">
+          <Card className="card_howTo" bg="light" border="light">
             <Card.Img
-              className="mt-5 mb-2"
+              className="mt-3 mb-2"
               width="100px"
               height="100px"
               src="https://dii3ne04p2g9s.cloudfront.net/img/homepage/ownerblock-image1.4338a2dae418.svg"
             />
             <Card.Body>
-              <Card.Text style={{ color: "#6667AB" }}>
-                1. Crie o seu anúncio <b>grátis</b> em 2 minutos.
+              <Card.Text style={{ color: "#27293d" }}>
+                1. Crie o seu anúncio <b>grátis</b> em um minuto.
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card bg="light" border="light">
+          <Card className="card_howTo" bg="light" border="light">
             <Card.Img
-              className="mt-5 mb-2"
+              className="mt-3 mb-2"
               width="100px"
               height="100px"
               src="https://dii3ne04p2g9s.cloudfront.net/img/homepage/ownerblock-image2.bceb7891e85c.svg"
             />
             <Card.Body>
-              <Card.Text style={{ color: "#6667AB" }}>
+              <Card.Text style={{ color: "#27293d" }}>
                 2. Administre os seus pedidos de aluguel de acordo com as suas
                 condições.
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card bg="light" border="light">
+          <Card className="card_howTo" bg="light" border="light">
             <Card.Img
-              className="mt-5 mb-2"
+              className="mt-3 mb-2"
               width="100px"
               height="100px"
               src="https://dii3ne04p2g9s.cloudfront.net/img/homepage/ownerblock-image3.e5449988511a.svg"
             />
             <Card.Body>
-              <Card.Text style={{ color: "#6667AB" }}>
+              <Card.Text style={{ color: "#27293d" }}>
                 3. Conheça o locatário para a entrega das chaves.
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card bg="light" border="light">
+          <Card className="card_howTo" bg="light" border="light">
             <Card.Img
-              className="mt-5 mb-2"
+              className="mt-3 mb-2"
               width="100px"
               height="100px"
               src="https://dii3ne04p2g9s.cloudfront.net/img/homepage/ownerblock-image4.1cc0859796c4.svg"
             />
             <Card.Body>
-              <Card.Text style={{ color: "#6667AB" }}>
+              <Card.Text style={{ color: "#27293d" }}>
                 4. Receba a sua <b>remuneração</b> e prossiga com o aluguel.
               </Card.Text>
             </Card.Body>

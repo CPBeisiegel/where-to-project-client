@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { ButtonGlobal } from "../../components/Button";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { Review } from "../../components/Review";
 import { AuthContext } from "../../contexts/authContext";
 import "./StayDetails.css";
@@ -211,9 +211,7 @@ export function StayDetails() {
                       style={{ marginRight: "10px" }}
                       to={`/stays/user-stay/update/${id}`}
                     >
-                      <ButtonGlobal variant="outline-success">
-                        Editar
-                      </ButtonGlobal>
+                      <Button variant="outline-success">Editar</Button>
                     </Link>
                     <Link style={{ textDecoration: "none" }} to={`/stays`}>
                       <ButtonGlobal

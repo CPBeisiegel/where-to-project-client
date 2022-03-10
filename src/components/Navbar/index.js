@@ -42,14 +42,12 @@ export function NavbarExterna() {
 
           {loginState ? (
             <NavDropdown
-              style={{ color: "white" }}
-              title="Dropdown"
-              id="basic-nav-dropdown"
+              title="Minhas Paginas"
+              id="nav-dropdown"
+              href="#"
+              className="nav"
             >
-              <NavDropdown.Item
-                style={{ color: "white" }}
-                href={loginState ? "/user-home" : "login"}
-              >
+              <NavDropdown.Item href={loginState ? "/user-home" : "login"}>
                 {loginState ? " Perfil" : "Login"}
               </NavDropdown.Item>
               <NavDropdown.Item href={`/stays/create-stay`}>

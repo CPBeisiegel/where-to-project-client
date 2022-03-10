@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { Button, Container } from "react-bootstrap";
 import { Cards } from "../../components/Card";
+import "./UserHome.css";
 
 function UserHome() {
   const { id } = useParams();
@@ -40,6 +41,15 @@ function UserHome() {
     fetchMyStays();
   }, []);
 
+  async function handleDelete() {
+    try {
+      await apis.delete(`/users/disable-account`);
+      id.setRerender(true);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className="container mt-4 mb-4 d-flex flex-column justify-content-center align-items-center">
       <div
@@ -63,9 +73,20 @@ function UserHome() {
               <p className=" subtitleFont ms-2 mt-3">{profile.email}</p>
             </div>
 
-            <div className="d-flex justify-content-center">
+            <div className="btn-perfil">
               <Link to={`/users/profile/update/${profile._id}`}>
-                <Button variant="primary">Editar Perfil </Button>
+                <Button style={{ marginBottom: "10px" }} variant="outline-dark">
+                  Editar Perfil{" "}
+                </Button>
+              </Link>
+              <Link style={{ textDecoration: "none" }} to={`/login`}>
+                <Button
+                  variant="outline-danger"
+                  type="button"
+                  onClick={handleDelete}
+                >
+                  Deletar
+                </Button>
               </Link>
             </div>
           </div>

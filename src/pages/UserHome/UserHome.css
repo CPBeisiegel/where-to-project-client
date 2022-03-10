@@ -1,0 +1,5 @@
+.btn-perfil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

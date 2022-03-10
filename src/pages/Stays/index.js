@@ -1,11 +1,9 @@
+import { useState, useEffect } from "react";
+import apis from "../../apis/api";
 import { Cards } from "../../components/Card";
-import { SearchBar } from "../../components/Searchbar";
+import Search from "../../components/Search/index";
 import { Container } from "react-bootstrap";
 import "./Stays.css";
-/* import { InternalNavbar } from "../../components/InternalNavbar"; */
-import { useState, useEffect } from "react";
-
-import apis from "../../apis/api";
 
 export function Stays() {
   /*  const navigate = useNavigate(); */
@@ -52,10 +50,9 @@ export function Stays() {
   return (
     <Container>
       <div className="search mb-3" style={{ marginTop: "30px" }}>
-        <SearchBar filterAPI={filterStays} />
+        <Search filterAPI={filterStays} />
       </div>
 
-      {/*   <InternalNavbar /> */}
       <div className="cards" style={{ marginTop: "15px" }}>
         {stays.map((currentStay) => {
           return (

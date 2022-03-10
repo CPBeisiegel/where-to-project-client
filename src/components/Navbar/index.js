@@ -53,7 +53,7 @@ export function NavbarExterna() {
               <NavDropdown.Item href={`/stays/create-stay`}>
                 Cadastrar uma estadia
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Sobre</NavDropdown.Item>
+              <NavDropdown.Item href={`/sobre`}>Sobre</NavDropdown.Item>
             </NavDropdown>
           ) : (
             <Nav.Link

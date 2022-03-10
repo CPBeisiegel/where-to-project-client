@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 export default function Search(props) {
   return (
     <Form className="d-flex">
-      <input
+      <Form.Control
         type="search"
         name="searchParams"
         placeholder="Search"

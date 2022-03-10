@@ -23,7 +23,6 @@ function App() {
       <NavbarExterna />
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route
           path="/user-home"
           element={<ProtectedRoute component={UserHome} />}
@@ -56,6 +55,10 @@ function App() {
         <Route
           path="/review-delete/:reviewId"
           component={<ProtectedRoute component={DeleteReview} />}
+        />
+        <Route
+          path="/users/profile/update/:id"
+          element={<ProtectedRoute component={UserEditProfile} />}
         />
       </Routes>
     </AuthContextComponent>

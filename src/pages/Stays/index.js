@@ -34,9 +34,18 @@ export function Stays() {
       setStays([...backup]);
       return;
     }
-    const filtered = stays.filter((currentStay) =>
-      currentStay.stayTitle.toLowerCase().includes(searchParams.toLowerCase())
+    console.log(stays);
+    const filtered = stays.filter(
+      (currentStay) =>
+        currentStay.stayTitle
+          .toLowerCase()
+          .includes(searchParams.toLowerCase()) ||
+        currentStay.stayCountry
+          .toLowerCase()
+          .includes(searchParams.toLowerCase()) ||
+        currentStay.stayCity.toLowerCase().includes(searchParams.toLowerCase())
     );
+
     setStays(filtered);
   }
 

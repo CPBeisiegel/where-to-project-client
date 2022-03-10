@@ -29,17 +29,20 @@ export function NavbarExterna() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto navbar-brand ">
-            <Nav.Link href={loginState ? "/user-home" : "login"}>
+            <Nav.Link
+              href={loginState ? "/user-home" : "login"}
+              style={{ color: "white" }}
+            >
               {loginState ? null : "Login"}
             </Nav.Link>
-            <Nav.Link href={"/stays"} className="nav-stays">
+            <Nav.Link href={"/stays"} style={{ color: "white" }}>
               Estadias
             </Nav.Link>
           </Nav>
 
           {loginState ? (
             <NavDropdown
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: "none", color: "white" }}
               title="Dropdown"
               id="basic-nav-dropdown"
             >
@@ -52,7 +55,10 @@ export function NavbarExterna() {
               <NavDropdown.Item href="#action/3.3">Sobre</NavDropdown.Item>
             </NavDropdown>
           ) : (
-            <Nav.Link style={{ textDecoration: "none" }} href="/signup">
+            <Nav.Link
+              style={{ textDecoration: "none", color: "white" }}
+              href="/signup"
+            >
               Cadastrar
             </Nav.Link>
           )}

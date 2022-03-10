@@ -52,6 +52,21 @@ export function Carrossel() {
           </p>
         </Carousel.Caption>
       </Carousel.Item>
+      <Carousel.Item interval={5000}>
+        <img
+          style={{
+            height: "30rem",
+            width: "100%",
+            objectFit: "cover",
+          }}
+          src="https://viagemegastronomia.cnnbrasil.com.br/wp-content/uploads/sites/5/2021/01/porto-portugal-guia.jpg"
+          alt="Third slide"
+        />
+        <Carousel.Caption>
+          <h3>Where to... fim de semana nostágico?</h3>
+          <p>No Porto, estadias com conforto e história.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
     </Carousel>
   );
 }

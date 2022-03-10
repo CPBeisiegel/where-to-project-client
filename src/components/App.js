@@ -14,8 +14,8 @@ import { EditStay } from "../pages/EditStay";
 import { UserEditProfile } from "../pages/UserEditProfile";
 import { PostNewComent } from "../pages/PostNewComent/index";
 import { DeleteReview } from "../components/Review/DeleteReview";
-
 import { AuthContextComponent } from "../contexts/authContext";
+import { Sobre } from "../pages/Sobre/index";
 
 function App() {
   return (
@@ -35,6 +35,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/stays" element={<Stays />} />
+        <Route path="/sobre" element={<Sobre />} />
         <Route
           path="/stays/create-stay"
           element={<ProtectedRoute component={PostNewStay} />}

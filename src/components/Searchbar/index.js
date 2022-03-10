@@ -10,7 +10,6 @@ export default function SearchBar(props) {
           placeholder="Search"
           className="me-2"
           aria-label="Search"
-          // Criando uma callback anonima para invocar a função passada por props com o value do input como parametro
           onKeyUp={(event) => {
             props.filterAPI(event.target.value);
           }}

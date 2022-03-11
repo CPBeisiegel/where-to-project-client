@@ -3,20 +3,20 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { ButtonGlobal } from "../../components/Button";
-import { Container, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Review } from "../../components/Review";
 import { AuthContext } from "../../contexts/authContext";
 import "./StayDetails.css";
 
 export function StayDetails() {
   const { loggedInUser } = useContext(AuthContext);
-  const [stayUser, setStayUser] = useState({
+  /*   const [stayUser, setStayUser] = useState({
     userName: "",
     email: "",
     password: "",
     userPhone: "",
     userImage: "",
-  });
+  }); */
   const [stayDetail, setStayDetail] = useState({
     stayTitle: "",
     stayCountry: "",
@@ -41,7 +41,7 @@ export function StayDetails() {
   });
   const { id } = useParams();
 
-  useEffect(() => {
+  /*   useEffect(() => {
     async function fetchUser() {
       try {
         const response = await apis.get(`/users/profile/${id}`);
@@ -52,7 +52,7 @@ export function StayDetails() {
       }
     }
     fetchUser();
-  }, [id]);
+  }, [id]); */
 
   useEffect(() => {
     async function fetchStayDetail() {
@@ -77,6 +77,8 @@ export function StayDetails() {
     }
   }
 
+  console.log("OLHA", loggedInUser);
+  console.log("ERRO", stayDetail.userId);
   return (
     <Container className="detail" key={stayDetail._id}>
       <div className="container mt-2 mb-2 d-flex flex-column justify-content-center align-items-center">
@@ -205,15 +207,20 @@ export function StayDetails() {
                 </Link>
               </div>
               <div className="btn-buttons">
-                {stayDetail.userId === loggedInUser.user._id && (
+                {stayDetail.userId._id === loggedInUser.user._id && (
                   <>
                     <Link
-                      style={{ marginRight: "10px" }}
+                      style={{ textDecoration: "none" }}
                       to={`/stays/user-stay/update/${id}`}
                     >
-                      <Button variant="outline-success">Editar</Button>
+                      <ButtonGlobal variant="outline-success">
+                        Editar
+                      </ButtonGlobal>
                     </Link>
-                    <Link style={{ textDecoration: "none" }} to={`/stays`}>
+                    <Link
+                      style={{ textDecoration: "none", marginLeft: "10px" }}
+                      to={`/stays`}
+                    >
                       <ButtonGlobal
                         variant="outline-danger"
                         type="button"

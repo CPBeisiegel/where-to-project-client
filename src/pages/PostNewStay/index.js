@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import apis from "../../apis/api";
 import { ButtonGlobal } from "../../components/Button";
-import "./PostNewStay.css"
+import "./PostNewStay.css";
 
 export function PostNewStay() {
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ export function PostNewStay() {
         stayImage: stayImage,
       });
       console.log(response);
-      setLoading(false);
+      setLoading(true);
       navigate("/stays"); /* ADICIONAR A PAGE DE CASAS */
     } catch (error) {
       setLoading(false);

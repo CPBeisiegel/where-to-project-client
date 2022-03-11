@@ -20,6 +20,7 @@ function Signup(props) {
     userPhone: null,
   });
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -39,10 +40,15 @@ function Signup(props) {
     }
 
     try {
+      setLoading(true);
+
       await api.post("/users/signup", state);
+
       setErrors({ userName: "", password: "", email: "", userPhone: "" });
+      setLoading(true);
       navigate("/login");
     } catch (err) {
+      setLoading(false);
       if (err.response) {
         console.error(err.response);
         return setErrors({ ...err.response.data.errors });
@@ -142,7 +148,19 @@ function Signup(props) {
 
         <div>
           <div style={{ marginTop: "15px", marginBottom: "15px" }}>
-            <ButtonGlobal type="submit">Cadastrar</ButtonGlobal>
+            <ButtonGlobal
+              variant="outline-success"
+              type="submit"
+              disable={loading}
+            >
+              {loading ? (
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                "Cadastrar"
+              )}
+            </ButtonGlobal>
           </div>
           <div style={{ marginTop: "15px", marginBottom: "15px" }}>
             {error ? <ErrorAlert>{error}</ErrorAlert> : null}
